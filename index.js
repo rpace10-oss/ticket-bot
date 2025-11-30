@@ -1,4 +1,5 @@
 require("dotenv").config();
+const http = require("http");
 console.log("env loaded");
 
 const {
@@ -16,6 +17,17 @@ if (!process.env.DISCORD_TOKEN) {
   console.error("No DISCORD_TOKEN in .env");
   process.exit(1);
 }
+
+// Simple web server so Render sees an open port
+const server = http.createServer((req, res) => {
+  res.writeHead(200, { "Content-Type": "text/plain" });
+  res.end("OK\n");
+});
+
+const PORT = process.env.PORT || 3000;
+server.listen(PORT, () => {
+  console.log("HTTP server listening on port " + PORT);
+});
 
 const client = new Client({
   intents: [GatewayIntentBits.Guilds],
