@@ -1,0 +1,6 @@
+# ignore env file with secrets
+.env
+
+# optional: node junk
+node_modules
+.env.*
