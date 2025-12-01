@@ -40,45 +40,46 @@ client.once("ready", () => {
 
 client.on("interactionCreate", async (interaction) => {
   // Slash command: /ticketpanel
-  if (interaction.isChatInputCommand()) {
-    if (interaction.commandName === "ticketpanel") {
-      const embed = new EmbedBuilder()
-        .setTitle("🎫 Department Support Tickets")
-        .setDescription(
-          "Need assistance with anything related to the department?\n" +
-          "Use the buttons below to open a ticket and a staff member will be with you shortly.\n\n" +
-          "**What we can help with:**\n" +
-          "> 🟢 General Support – Basic questions, info, or small issues.\n" +
-          "> 🛡️ Command Ticket – Policy questions, complaints, or larger concerns.\n\n" +
-          "Please only have one active ticket open at a time."
-        )
-        .setColor(0x5865f2)
-		.setImage("https://blazesmods.com/cdn/shop/files/PATROL13.png?v=1721824805&width=1100");
+if (interaction.isChatInputCommand()) {
+  if (interaction.commandName === "ticketpanel") {
+    const embed = new EmbedBuilder()
+      .setTitle("🎫 Department Support Tickets")
+      .setDescription(
+        "Need assistance with anything related to the department?\n" +
+        "Use the buttons below to open a ticket and a staff member will be with you shortly.\n\n" +
+        "**What we can help with:**\n" +
+        "> 🟢 **General Support** – Basic questions, info, or small issues.\n" +
+        "> 🛡️ **Command Ticket** – Policy questions, complaints, or larger concerns.\n\n" +
+        "Please only have one active ticket open at a time."
+      )
+      .setColor(0x5865f2)
+      // 👇 image at bottom of the embed
+      .setImage("https://blazesmods.com/cdn/shop/files/PATROL13.png");
 
-      const row = new ActionRowBuilder().addComponents(
-        new ButtonBuilder()
-          .setCustomId("ticket_general")
-          .setLabel("General Support")
-          .setEmoji("🟢")
-          .setStyle(ButtonStyle.Primary),
-        new ButtonBuilder()
-          .setCustomId("ticket_command")
-          .setLabel("Command Ticket")
-          .setEmoji("🛡️")
-          .setStyle(ButtonStyle.Secondary)
-      );
+    const row = new ActionRowBuilder().addComponents(
+      new ButtonBuilder()
+        .setCustomId("ticket_general")
+        .setLabel("General Support")
+        .setEmoji("🟢")
+        .setStyle(ButtonStyle.Primary),
+      new ButtonBuilder()
+        .setCustomId("ticket_command")
+        .setLabel("Command Ticket")
+        .setEmoji("🛡️")
+        .setStyle(ButtonStyle.Secondary)
+    );
 
-      await interaction.reply({
-        content: "✅ Ticket panel sent in this channel.",
-        ephemeral: true
-      });
+    await interaction.reply({
+      content: "✅ Ticket panel sent in this channel.",
+      ephemeral: true
+    });
 
-      await interaction.channel.send({
-        embeds: [embed],
-        components: [row]
-      });
-    }
+    await interaction.channel.send({
+      embeds: [embed],
+      components: [row]
+    });
   }
+}
 
   // Buttons to create tickets
   if (interaction.isButton()) {
