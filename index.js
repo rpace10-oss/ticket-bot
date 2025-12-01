@@ -52,7 +52,8 @@ client.on("interactionCreate", async (interaction) => {
           "> 🛡️ Command Ticket – Policy questions, complaints, or larger concerns.\n\n" +
           "Please only have one active ticket open at a time."
         )
-        .setColor(0x5865f2);
+        .setColor(0x5865f2)
+		.setImage("https://blazesmods.com/cdn/shop/files/PATROL13.png?v=1721824805&width=1100");
 
       const row = new ActionRowBuilder().addComponents(
         new ButtonBuilder()
