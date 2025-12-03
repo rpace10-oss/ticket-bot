@@ -43,18 +43,17 @@ client.on("interactionCreate", async (interaction) => {
 if (interaction.isChatInputCommand()) {
   if (interaction.commandName === "ticketpanel") {
     const embed = new EmbedBuilder()
-      .setTitle("🎫 Department Support Tickets")
-      .setDescription(
-        "Need assistance with anything related to the department?\n" +
-        "Use the buttons below to open a ticket and a staff member will be with you shortly.\n\n" +
-        "**What we can help with:**\n" +
-        "> 🟢 **General Support** – Basic questions, info, or small issues.\n" +
-        "> 🛡️ **Command Ticket** – Policy questions, complaints, or larger concerns.\n\n" +
-        "Please only have one active ticket open at a time."
-      )
-      .setColor(0x5865f2)
-      // 👇 image at bottom of the embed
-      .setImage("https://blazesmods.com/cdn/shop/files/PATROL13.png");
+  .setTitle("🎫 Department Support Tickets")
+  .setDescription(
+    "Need assistance with anything related to the department?\n" +
+    "Use the buttons below to open a ticket and a staff member will be with you shortly.\n\n" +
+    "**What we can help with:**\n" +
+    "> 🟢 **General Support** – Basic questions, info, or small issues.\n" +
+    "> 🛡️ **Command Ticket** – Policy questions, complaints, or larger concerns.\n\n" +
+    "Please only have one active ticket open at a time."
+  )
+  .setColor(0x5865f2)
+  .setImage("https://recklemodifications.com/cdn/shop/files/FiveM_b3095_GTAProcess2025-08-0704-16-44.png?v=1759722741&width=713");
 
     const row = new ActionRowBuilder().addComponents(
       new ButtonBuilder()
